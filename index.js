@@ -6,18 +6,18 @@ const intents = require('discord.js').Intents;
 const logger = require('winston');
 const auth = require('./config/auth.json');
 const express = require('express');
-const app = express()
-const port = 3000
+const app = express();
+const port = 3000;
 
 app.get('/', (req, res) => {
-  res.send('<h1>VK Discord Bot</h1>')
-})
+  res.send('<h1>VK Discord Bot</h1>');
+});
 
 app.listen(port, () => {
-  console.log(`VK Discord bot UI listening on port ${port}`)
-})
+  console.log(`VK Discord bot UI listening on port ${port}`);
+});
 const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY
+  apiKey: process.env.openai_api_key
 });
 const openai = new OpenAIApi(configuration);
 
