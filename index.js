@@ -78,5 +78,5 @@ bot.on('messageCreate', async (message) => {
   }
 });
 
-bot.login(process.env.client_token);
+bot.login(process.env.discord_client_token);
 
