@@ -7,7 +7,7 @@ const logger = require('winston');
 const auth = require('./config/auth.json');
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
   res.send('<h1>VK Discord Bot</h1>');
