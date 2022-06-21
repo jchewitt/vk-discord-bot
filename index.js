@@ -42,7 +42,8 @@ bot.on('messageCreate', async (message) => {
   console.log(message);
   // Our bot needs to know if it will execute a command
   // It will listen for messages that will start with `!`
-  if (message.content.substring(0, 5).toLowerCase() == 'vkbot') {
+  let messageText = message.content;
+  if (messageText.toLowerCase().startsWith('vkbot')) {
     const formattedMessage = message.content.toLowerCase();
     const args = formattedMessage.split(' ').splice(1);
     if (message.author.id !== bot.user.id) {
@@ -52,8 +53,8 @@ bot.on('messageCreate', async (message) => {
           break;
       }
     }
-  } else if (message.startsWith(':')) {
-    message = message.substr(1).trimStart();
+  } else if (messageText.startsWith('?')) {
+    messageText = messageText.substr(1).trimStart();
     if (message.author.id !== bot.user.id) {
       const response = await openai.createCompletion('text-davinci-002', {
         prompt: `${message.content}`,
