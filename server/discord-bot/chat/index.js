@@ -1,0 +1,2 @@
+require('./interactions')
+module.exports = {}
