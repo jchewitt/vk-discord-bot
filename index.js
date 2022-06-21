@@ -17,7 +17,7 @@ app.listen(port, () => {
   console.log(`VK Discord bot UI listening on port ${port}`);
 });
 const configuration = new Configuration({
-  apiKey: process.env.openai_api_key
+  apiKey: process.env.OPENAI_API_KEY
 });
 const openai = new OpenAIApi(configuration);
 
@@ -78,5 +78,5 @@ bot.on('messageCreate', async (message) => {
   }
 });
 
-bot.login(process.env.discord_client_token);
+bot.login(process.env.DISCORD_CLIENT_TOKEN);
 
