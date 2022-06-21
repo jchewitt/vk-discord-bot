@@ -31,7 +31,7 @@ logger.level = 'debug';
 
 // Initialize Discord Bot
 const bot = new Client({intents: [intents.FLAGS.GUILDS, intents.FLAGS.GUILD_MESSAGES]});
-
+//
 bot.on('ready', function (evt) {
   logger.info('Connected');
   logger.info('Logged in as: ');
