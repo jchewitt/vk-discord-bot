@@ -1,0 +1,10 @@
+{
+  "name": "VK Discord Bot",
+  "description": "Vigil Knights general purpose discord bot.",
+  "keywords": [
+    "discord",
+    "bot",
+    "vigil knights"
+  ],
+  "repository": "https://github.com/jchewitt/vk-discord-bot"
+}

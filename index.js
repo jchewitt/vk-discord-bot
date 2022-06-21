@@ -17,7 +17,7 @@ app.listen(port, () => {
   console.log(`VK Discord bot UI listening on port ${port}`);
 });
 const configuration = new Configuration({
-  apiKey: process.env.openai_api_key
+  apiKey: process.env.OPENAI_API_KEY
 });
 const openai = new OpenAIApi(configuration);
 
@@ -31,7 +31,7 @@ logger.level = 'debug';
 
 // Initialize Discord Bot
 const bot = new Client({intents: [intents.FLAGS.GUILDS, intents.FLAGS.GUILD_MESSAGES]});
-
+//
 bot.on('ready', function (evt) {
   logger.info('Connected');
   logger.info('Logged in as: ');
@@ -39,10 +39,12 @@ bot.on('ready', function (evt) {
 });
 
 bot.on('messageCreate', async (message) => {
+  if (process.env.EXCLUDE_CHANNELS && ~process.env.EXCLUDE_CHANNELS.indexOf(message.channelId)) return;
   console.log(message);
   // Our bot needs to know if it will execute a command
   // It will listen for messages that will start with `!`
-  if (message.content.substring(0, 5).toLowerCase() == 'vkbot') {
+  let messageText = message.content;
+  if (messageText.toLowerCase().startsWith('vkbot')) {
     const formattedMessage = message.content.toLowerCase();
     const args = formattedMessage.split(' ').splice(1);
     if (message.author.id !== bot.user.id) {
@@ -52,8 +54,8 @@ bot.on('messageCreate', async (message) => {
           break;
       }
     }
-  } else if (message.startsWith(':')) {
-    message = message.substr(1).trimStart();
+  } else if (messageText.startsWith('?')) {
+    messageText = messageText.substr(1).trimStart();
     if (message.author.id !== bot.user.id) {
       const response = await openai.createCompletion('text-davinci-002', {
         prompt: `${message.content}`,
@@ -78,5 +80,5 @@ bot.on('messageCreate', async (message) => {
   }
 });
 
-bot.login(process.env.discord_client_token);
+bot.login(process.env.DISCORD_CLIENT_TOKEN);
 
