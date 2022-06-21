@@ -39,6 +39,7 @@ bot.on('ready', function (evt) {
 });
 
 bot.on('messageCreate', async (message) => {
+  if (process.env.EXCLUDE_CHANNELS && ~process.env.EXCLUDE_CHANNELS.indexOf(message.channelId)) return;
   console.log(message);
   // Our bot needs to know if it will execute a command
   // It will listen for messages that will start with `!`
