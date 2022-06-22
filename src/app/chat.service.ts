@@ -9,6 +9,6 @@ export class ChatService {
 
   sendMessage(user: any, message: any) {
     console.log('sending message');
-    return this.http.post('http://localhost:3000/api/v1/sendMessage', {user, message});
+    return this.http.post('/api/v1/sendMessage', {user, message});
   }
 }
