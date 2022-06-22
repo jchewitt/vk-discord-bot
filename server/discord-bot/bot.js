@@ -8,7 +8,9 @@ const client = new Client({
     ...config.DISCORD.FLAGS
   ],
   partials: [
-    'CHANNEL'
+    'CHANNEL',
+    'GUILD_MEMBER',
+    'USER'
   ]
 });
 
