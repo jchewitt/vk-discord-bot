@@ -1,5 +1,8 @@
 require('dotenv').config();
+const path = require('node:path');
 const { Intents } = require('discord.js');
+
+const cwd = path.join(__dirname, '/../dist/vk-bot-portal');
 
 module.exports = {
   ENVIRONMENT: process.env.ENVIRONMENT,
@@ -15,7 +18,8 @@ module.exports = {
     CHAT_DELIMITER: ';'
   },
   SERVER: {
-    PORT: process.env.PORT || 3000
+    PORT: process.env.PORT || 3000,
+    WEB_CWD: cwd
   },
   OPENAI: {
     API_KEY: process.env.OPENAI_API_KEY

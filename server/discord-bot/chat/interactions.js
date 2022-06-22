@@ -1,5 +1,5 @@
 const discordConfig = require('../../../config').DISCORD;
-const openai = require('../../../src/engines/openai');
+const openai = require('../../engines/openai');
 const logger = require('../../logger')
 const { client } = require('../bot');
 

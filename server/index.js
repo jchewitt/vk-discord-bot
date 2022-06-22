@@ -1,4 +1,4 @@
 module.exports = {
-  express: require('./express').server,
+  express: require('./express'),
   vkbot: require('./discord-bot').bot
 }
