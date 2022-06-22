@@ -6,5 +6,6 @@ process.on('unhandledRejection', (reason, promise) => {
   throw reason;
 });
 
-vkbot.start();
-server.init();
+vkbot.start().then(() => {
+  server.init();
+})

@@ -4,6 +4,9 @@ const logger = require('../../logger')
 const { client } = require('../bot');
 
 client.on('messageCreate', async (message) => {
+  if (message.author.id === client.user.id) return;
+  console.log(`${message.channel.type} ${message.author.username}: ${message.content}`)
+    return;
   if (discordConfig.EXCLUDE_CHANNELS && ~discordConfig.EXCLUDE_CHANNELS.indexOf(message.channelId)) return;
   logger.info(message);
 

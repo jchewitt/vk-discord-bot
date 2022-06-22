@@ -8,6 +8,6 @@ const swaggerDocument = YAML.load(path.join(__dirname + '/swagger.yaml'));
 
 router.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-router.use('/test', testRouter);
+router.use('/', testRouter);
 
 module.exports = router;

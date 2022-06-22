@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ChatService} from "./chat.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'vk-bot-portal';
+
+  constructor(private chatService: ChatService) {}
+
+  sendMessage() {
+    const mb = document.getElementById('messageBox') as HTMLInputElement;
+    this.chatService.sendMessage('Titherin', mb.value).subscribe();
+    mb.value = '';
+  }
 }

@@ -2,6 +2,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { Collection } = require('discord.js');
 const { client, api } = require('../bot');
+const { CommandsService } = require('../api/services');
 
 client.commands = new Collection();
 const commands = [];
@@ -17,5 +18,5 @@ for (const file of commandFiles) {
 
 
 module.exports = async () => {
-  await api.putCommands(commands);
+    await CommandsService.putCommands(commands);
 }
